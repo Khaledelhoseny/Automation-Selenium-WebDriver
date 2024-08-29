@@ -30,9 +30,9 @@ public class LoginTests extends BaseTests {
     @Test (groups = {"modefiedRegression" , "smoke"} ,priority = 3)
     public void testInvalidPassword() throws FileNotFoundException, InterruptedException {
         LoginPage loginPage =  homePage.clickFormAuthemticationLink() ;
-        SecureAreaPage secureAreaPage = loginPage.loginFeature(dataModel().Login.InValidCredentials.InValidPassword.Username,dataModel().Login.InValidCredentials.InValidUserName.Password);
+        SecureAreaPage secureAreaPage = loginPage.loginFeature(dataModel().Login.InValidCredentials.InValidPassword.Username,dataModel().Login.InValidCredentials.InValidPassword.Password);
         String actualResult = secureAreaPage.getValidationMessage() ;
-        String expectedResult = "Your password is invalid!" ;
+        String expectedResult = "Your password is invalid!";
         Assert.assertTrue(actualResult.contains(expectedResult));
     }
 }

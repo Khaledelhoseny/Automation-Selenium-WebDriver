@@ -52,7 +52,7 @@ public class BaseTests {
         readDataFromJson = new ReadDataFromJson();
         driver.get(dataModel().URL);
         //        Take Screen Record
-        ScreenRecorderUtil.startRecord(testMethod.getName());
+//        ScreenRecorderUtil.startRecord(testMethod.getName());
     }
 
     @AfterMethod (groups = {"modefiedRegression"})
@@ -61,7 +61,7 @@ public class BaseTests {
         utilsTests = new UtilsTests(driver) ;
         utilsTests.takeScreenShot(testMethod);
 //                Take Screen Record
-        ScreenRecorderUtil.stopRecord();
+//        ScreenRecorderUtil.stopRecord();
         utilsTests.setStatus(testMethod,result);
     }
 

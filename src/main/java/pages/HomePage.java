@@ -11,11 +11,15 @@ public class HomePage extends MethodHandles {
    }
 
     private final By formAuthemticationLink = By.linkText("Form Authentication");
+    private final By entryAdLink = By.linkText("Entry Ad");
 
-   public LoginPage clickFormAuthemticationLink(){
+    public LoginPage clickFormAuthemticationLink(){
        click(formAuthemticationLink ,  5);
        return new LoginPage(driver) ;
    }
-
+    public EntryAdPage clickOnentryAdLink(){
+        click(entryAdLink,5);
+        return new EntryAdPage(driver) ;
+    }
 
 }
