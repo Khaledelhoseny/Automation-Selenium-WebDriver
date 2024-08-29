@@ -1,0 +1,24 @@
+{
+  "URL" : "https://the-internet.herokuapp.com/",
+  "Login": {
+    "ValidCredentials" : {
+      "Username" : "tomsmith" ,
+      "Password" : "SuperSecretPassword!"
+    },
+    "InValidCredentials" : {
+      "InValidPassword" : {
+        "Username" : "tomsmith" ,
+        "Password" : "123422"
+      },
+      "InValidUserName": {
+        "Username" : "aymaannss" ,
+        "Password" : "SuperSecretPassword!"
+      }
+    }
+  },
+  "Login2" : [
+    ["ahmed" , "123"],
+    ["mostafa" , "123"],
+    ["khaled" , "123"]
+  ]
+}
