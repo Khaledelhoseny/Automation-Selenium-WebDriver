@@ -52,6 +52,22 @@ public class MethodHandles {
         return webElement(locator).getText() ;
     }
 
+    protected boolean isSelected(By locator){
+        return webElement(locator).isSelected() ;
+    }
 
+    protected void acceptJsAlert(){
+        driver.switchTo().alert().accept();
+    }
+    protected void dismissJsAlert(){
+        driver.switchTo().alert().dismiss();
+    }
+    protected void insertToJsAlert(String text){
+        driver.switchTo().alert().sendKeys(text);
+    }
+    protected void dragAndDropAction(By locator1,By locator2){
+        actions =  new Actions(driver) ;
+        actions.clickAndHold(webElement(locator1)).moveToElement(webElement(locator2)).release().build().perform();
+    }
 
 }

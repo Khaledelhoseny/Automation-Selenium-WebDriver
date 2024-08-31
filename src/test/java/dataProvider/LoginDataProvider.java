@@ -2,7 +2,6 @@ package dataProvider;
 
 import org.testng.annotations.DataProvider;
 import reader.ReadDataFromJson;
-
 import java.io.FileNotFoundException;
 
 public class LoginDataProvider {

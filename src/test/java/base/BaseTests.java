@@ -65,10 +65,10 @@ public class BaseTests {
         utilsTests.setStatus(testMethod,result);
     }
 
-    @AfterClass (groups = {"modefiedRegression","smoke"})
-    public void teaDown(){
-        driver.quit();
-    }
+//    @AfterClass (groups = {"modefiedRegression","smoke"})
+//    public void teaDown(){
+//        driver.quit();
+//    }
 
     @BeforeSuite
     public void beforeSuite(){

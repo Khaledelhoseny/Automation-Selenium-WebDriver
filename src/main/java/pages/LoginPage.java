@@ -8,12 +8,9 @@ public class LoginPage extends MethodHandles {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
-
     private final By userNameField = By.id("username") ;
     private final By passwordField = By.id("password") ;
     private final By logineButton =  By.className("radius") ;
-
-
     public void insertUserName(String text ){
         sendKeys(userNameField, 5 , text );
     }

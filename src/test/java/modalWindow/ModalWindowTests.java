@@ -9,7 +9,6 @@ public class ModalWindowTests extends BaseTests {
     public void testDismissModalWindow() throws InterruptedException {
       EntryAdPage entryAdPage =  homePage.clickOnentryAdLink() ;
       Thread.sleep(3000);
-      entryAdPage.dismissModalFirstTime();
       entryAdPage.dismissModalWindow();
     }
 }
