@@ -23,7 +23,7 @@ public class JsAlertPage extends MethodHandles {
     }
 
     public String getValidationMessage(){
-        return getText(validationMessage) ;
+        return getText(validationMessage , 5) ;
     }
     ////////////////////////////////////////////////////////////////////////////////////
     public void clickOnJsConfirmButton (){

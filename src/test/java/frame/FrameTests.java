@@ -3,35 +3,32 @@ package frame;
 import base.BaseTests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.FramesPage;
+import pages.HomePage;
+import reader.ReadDataFromJson;
 
+import java.lang.reflect.Method;
 import java.util.Base64;
 
 public class FrameTests extends BaseTests {
-
-    protected WebDriver driver ;
     public FramesPage framesPage;
-    @BeforeClass
-    public void  setUp(){
-        driver = new ChromeDriver() ;
+    @Parameters("browser")
+    @BeforeClass(groups = {"modefiedRegression","smoke"})
+    @Override
+    public void setUp( @Optional("chrome") String browser ){
+        setUpBrowser(browser);
         driver.manage().window().maximize();
-        framesPage = new FramesPage(driver) ;
+//        homePage = new HomePage(driver);
+        framesPage = new FramesPage(driver);
     }
-
-    @BeforeMethod
-    public void goHome() {
+    @BeforeMethod (groups = {"modefiedRegression","smoke"})
+    @Override
+    public void goHome( Method testMethod ) throws Exception {
         driver.get("https://demo.automationtesting.in/Frames.html");
+        //        Take Screen Record
+//        ScreenRecorderUtil.startRecord(testMethod.getName());
     }
-
-    @AfterClass
-    public void tearDowon(){
-        driver.quit();
-    }
-
     @Test
     public void testIframe(){
         framesPage.insertText("helllooo");

@@ -25,7 +25,7 @@ public class EntryAdPage extends MethodHandles {
             click(clickHereLink , 5);
             try {
                 click(closeButton, 5);
-                System.out.println("Element found: " + getText(closeButton));
+                System.out.println("Element found: " + getText(closeButton , 5));
                 break;
             }catch (Exception e){
                 System.out.println("Element not found");

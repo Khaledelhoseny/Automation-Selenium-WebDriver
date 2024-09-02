@@ -1,5 +1,6 @@
 package utils;
 
+import org.apache.poi.ss.formula.atp.Switch;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -53,7 +54,8 @@ public class MethodHandles {
         actions.click(webElement(locator)).build().perform();
     }
 
-    protected String getText(By locator){
+    protected String getText(By locator , int time){
+        explicitWait( locator , time);
         return webElement(locator).getText() ;
     }
 
@@ -90,5 +92,14 @@ public class MethodHandles {
         select = new Select(webElement(locator));
         select.selectByIndex(index);
     }
+
+    protected void switchToFrame(String frameId){
+        driver.switchTo().frame(frameId);
+    }
+    protected void switchToParent(){
+        driver.switchTo().parentFrame();
+    }
+
+
 }
 

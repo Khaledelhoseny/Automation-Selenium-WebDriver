@@ -17,7 +17,7 @@ import java.io.FileNotFoundException;
 import java.lang.reflect.Method;
 
 public class BaseTests {
-    WebDriver driver ;
+    protected WebDriver driver ;
     UtilsTests utilsTests ;
     ChromeOptions chromeOptions ;
     FirefoxOptions firefoxOptions ;
@@ -54,7 +54,6 @@ public class BaseTests {
         //        Take Screen Record
 //        ScreenRecorderUtil.startRecord(testMethod.getName());
     }
-
     @AfterMethod (groups = {"modefiedRegression"})
     public void takeScrenShotAfterMethod (Method testMethod , ITestResult result) throws Exception {
 //                Take Screen Shots
@@ -64,7 +63,6 @@ public class BaseTests {
 //        ScreenRecorderUtil.stopRecord();
         utilsTests.setStatus(testMethod,result);
     }
-
 //    @AfterClass (groups = {"modefiedRegression","smoke"})
 //    public void teaDown(){
 //        driver.quit();

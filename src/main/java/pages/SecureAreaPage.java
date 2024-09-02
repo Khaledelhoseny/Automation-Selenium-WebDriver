@@ -12,7 +12,7 @@ public class SecureAreaPage extends MethodHandles {
     private final By validationMessage = By.id("flash");
 
     public String getValidationMessage() {
-        return  getText(validationMessage);
+        return  getText(validationMessage , 5);
     }
 
 }

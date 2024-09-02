@@ -18,6 +18,8 @@ public class HomePage extends MethodHandles {
     private final By dragAndDropLink = By.linkText("Drag and Drop");
     private final By hoverLink = By.linkText("Hovers");
     private final By dropDownLoadingLink = By.linkText("Dropdown") ;
+    private final By dynamicLoadingLink = By.linkText("Dynamic Loading") ;
+
 
 
 
@@ -50,5 +52,10 @@ public class HomePage extends MethodHandles {
         return new DropDownPage(driver) ;
     }
 
+    public DynamicLoadingPage clickOnDynamicLoadingLink (){
+        driver.findElement(dynamicLoadingLink).click();
+
+        return new DynamicLoadingPage(driver) ;
+    }
 
 }
