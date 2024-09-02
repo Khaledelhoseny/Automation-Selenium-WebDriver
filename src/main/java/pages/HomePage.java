@@ -17,6 +17,7 @@ public class HomePage extends MethodHandles {
     private final By jsAleartsLink = By.linkText("JavaScript Alerts") ;
     private final By dragAndDropLink = By.linkText("Drag and Drop");
     private final By hoverLink = By.linkText("Hovers");
+    private final By dropDownLoadingLink = By.linkText("Dropdown") ;
 
 
 
@@ -44,7 +45,10 @@ public class HomePage extends MethodHandles {
         click(hoverLink , 5);
         return new HoverPage(driver);
     }
-
+    public DropDownPage clickOnDropDownLink (){
+        driver.findElement(dropDownLoadingLink).click();
+        return new DropDownPage(driver) ;
+    }
 
 
 }
