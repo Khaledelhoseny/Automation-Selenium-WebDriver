@@ -14,8 +14,8 @@ public class FramesPage extends MethodHandles {
     private final By frameInput = By.xpath("(//input[@type = 'text'])") ;
     private final By iframeWithinAnIframe = By.linkText("Iframe with in an Iframe") ;
 
-    public void insertText( String text ){
-        switchToFrame(frameId);
+    public void insertTextInSingelIframe( String text ){
+        switchToFrameByString(frameId);
         sendKeys(frameInput,4,text);
         switchToParent();
     }
@@ -24,5 +24,10 @@ public class FramesPage extends MethodHandles {
         click(iframeWithinAnIframe,5);
     }
 
+    public void insertTextInNestedIframe( String text ){
+        switchToFrameByIndex(1);
+        switchToFrameByIndex(0);
+        sendKeys(frameInput,4,text);
+    }
 
 }

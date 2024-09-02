@@ -93,13 +93,15 @@ public class MethodHandles {
         select.selectByIndex(index);
     }
 
-    protected void switchToFrame(String frameId){
+    protected void switchToFrameByString(String frameId){
         driver.switchTo().frame(frameId);
     }
     protected void switchToParent(){
         driver.switchTo().parentFrame();
+
     }
-
-
+    protected void switchToFrameByIndex(int frameIndex){
+        driver.switchTo().frame(frameIndex);
+    }
 }
 

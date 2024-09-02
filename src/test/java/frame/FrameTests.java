@@ -30,8 +30,13 @@ public class FrameTests extends BaseTests {
 //        ScreenRecorderUtil.startRecord(testMethod.getName());
     }
     @Test
-    public void testIframe(){
-        framesPage.insertText("helllooo");
+    public void testSingleIframe(){
+        framesPage.insertTextInSingelIframe("helllooo");
         framesPage.clickOnIframeWithinAnIframe();
+    }
+    @Test
+    public void IframeWithInAnIframe(){
+        framesPage.clickOnIframeWithinAnIframe();
+        framesPage.insertTextInNestedIframe("khaled");
     }
 }
