@@ -24,7 +24,7 @@ public class BaseTests {
     public ReadDataFromJson readDataFromJson;
     public HomePage homePage;
     @Parameters("browser")
-    @BeforeClass(groups = {"modefiedRegression","smoke"})
+    @BeforeClass(groups = {"regression2","smoke"})
     public void setUp( @Optional("chrome") String browser ){
         setUpBrowser(browser);
         driver.manage().window().maximize();
@@ -47,33 +47,33 @@ public class BaseTests {
         }
     }
 
-    @BeforeMethod (groups = {"modefiedRegression","smoke"})
+    @BeforeMethod (groups = {"regression2","smoke"})
     public void goHome( Method testMethod ) throws Exception {
         readDataFromJson = new ReadDataFromJson();
         driver.get(dataModel().URL);
         //        Take Screen Record
-//        ScreenRecorderUtil.startRecord(testMethod.getName());
+        ScreenRecorderUtil.startRecord(testMethod.getName());
     }
-    @AfterMethod (groups = {"modefiedRegression"})
+    @AfterMethod (groups = {"regression2", "smoke"})
     public void takeScrenShotAfterMethod (Method testMethod , ITestResult result) throws Exception {
 //                Take Screen Shots
         utilsTests = new UtilsTests(driver) ;
         utilsTests.takeScreenShot(testMethod);
 //                Take Screen Record
-//        ScreenRecorderUtil.stopRecord();
+        ScreenRecorderUtil.stopRecord();
         utilsTests.setStatus(testMethod,result);
     }
-//    @AfterClass (groups = {"modefiedRegression","smoke"})
-//    public void teaDown(){
-//        driver.quit();
-//    }
+    @AfterClass (groups = {"regression2","smoke"})
+    public void teaDown(){
+        driver.quit();
+    }
 
-    @BeforeSuite
+    @BeforeSuite  (groups = {"regression2","smoke"})
     public void beforeSuite(){
         utilsTests = new UtilsTests(driver) ;
         utilsTests.createReport();
     }
-    @AfterSuite
+    @AfterSuite (groups = {"regression2","smoke"})
     public void afterSuite(){
         utilsTests = new UtilsTests(driver) ;
         utilsTests.flushReport();

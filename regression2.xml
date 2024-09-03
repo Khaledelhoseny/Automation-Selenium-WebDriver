@@ -3,13 +3,15 @@
 <suite name="Modefied Regression Test Suite">
     <groups>
         <run>
-            <include name="modefiedRegression"/>
+            <include name="regression2"/>
         </run>
     </groups>
-    <test name="chrome" parallel="classes" >
+    <test name="chrome" >
         <parameter name="browser" value="chrome"></parameter>
         <packages>
             <package name="login"></package>
+            <package name="checkBox"></package>
+            <package name="dropDown"></package>
         </packages>
     </test>
 </suite>

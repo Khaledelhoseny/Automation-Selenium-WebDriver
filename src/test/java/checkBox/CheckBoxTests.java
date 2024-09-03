@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import pages.CheckBoxPage;
 
 public class CheckBoxTests extends BaseTests {
-    @Test
+    @Test(groups = "regression2")
     public void testCheckBox(){
         CheckBoxPage checkBoxPage = homePage.clickOnCheckBoxLink() ;
         checkBoxPage.clickOnCheckBoxOne();

@@ -42,6 +42,7 @@ public class UtilsTests {
     }
 
     public void setStatus(Method method , ITestResult result){
+        System.out.println(extent);
         ExtentTest test = extent.createTest(method.getName());
         if (result.getStatus() == ITestResult.SUCCESS){
             test.pass("test pass") ;
