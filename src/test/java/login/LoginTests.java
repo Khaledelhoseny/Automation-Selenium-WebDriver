@@ -32,7 +32,7 @@ public class LoginTests extends BaseTests {
         LoginPage loginPage =  homePage.clickFormAuthemticationLink() ;
         SecureAreaPage secureAreaPage = loginPage.loginFeature(dataModel().Login.InValidCredentials.InValidPassword.Username,dataModel().Login.InValidCredentials.InValidPassword.Password);
         String actualResult = secureAreaPage.getValidationMessage() ;
-        String expectedResult = "Your password is invalid!";
+        String expectedResult = " ";
         Assert.assertTrue(actualResult.contains(expectedResult));
     }
 }

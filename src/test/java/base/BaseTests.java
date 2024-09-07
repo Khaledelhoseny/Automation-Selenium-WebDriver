@@ -53,6 +53,9 @@ public class BaseTests {
         driver.get(dataModel().URL);
         //        Take Screen Record
         ScreenRecorderUtil.startRecord(testMethod.getName());
+        //        Create Test case in report
+        utilsTests = new UtilsTests(driver) ;
+        utilsTests.createTestCaseInReport(testMethod);
     }
     @AfterMethod (groups = {"regression2", "smoke"})
     public void takeScrenShotAfterMethod (Method testMethod , ITestResult result) throws Exception {
@@ -61,6 +64,7 @@ public class BaseTests {
         utilsTests.takeScreenShot(testMethod);
 //                Take Screen Record
         ScreenRecorderUtil.stopRecord();
+//                Set status in extent report
         utilsTests.setStatus(testMethod,result);
     }
     @AfterClass (groups = {"regression2","smoke"})

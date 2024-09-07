@@ -15,10 +15,12 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class UtilsTests {
+import static utils.MethodHandles.extent;
+import static utils.MethodHandles.test;
+
+public class UtilsTests{
 
     WebDriver driver ;
-    static ExtentReports extent ;
     public UtilsTests(WebDriver driver){
         this.driver = driver ;
     }
@@ -43,7 +45,6 @@ public class UtilsTests {
 
     public void setStatus(Method method , ITestResult result){
         System.out.println(extent);
-        ExtentTest test = extent.createTest(method.getName());
         if (result.getStatus() == ITestResult.SUCCESS){
             test.pass("test pass") ;
         }else if (result.getStatus() == ITestResult.FAILURE ){
@@ -52,4 +53,10 @@ public class UtilsTests {
         test.addScreenCaptureFromPath(method.getName()+".png");
         test.log(Status.INFO , "<a href = '"+method.getName()+".avi'> Download Video </a>") ;
     }
+
+    public void createTestCaseInReport(Method method){
+        test = extent.createTest(method.getName());
+    }
+
+
 }

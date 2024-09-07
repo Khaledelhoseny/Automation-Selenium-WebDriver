@@ -1,7 +1,10 @@
 package utils;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import org.apache.poi.ss.formula.atp.Switch;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -18,13 +21,15 @@ public class MethodHandles {
     WebDriverWait wait  ;
     Actions actions ;
     Select select ;
+    static ExtentTest test ;
+    static ExtentReports extent ;
     public MethodHandles(WebDriver driver){
         this.driver = driver ;
     }
     private WebElement webElement(By locator ){
        return driver.findElement(locator) ;
     }
-    protected WebElement webElements(By locator , int index){
+    private WebElement webElements(By locator , int index){
         return driver.findElements(locator).get(index-1) ;
     }
     private void explicitWait(By locator , int time ){
@@ -37,11 +42,16 @@ public class MethodHandles {
     }
     protected void sendKeys(By locator , int time , String text){
         explicitWait(locator , time );
+        addBorderToElement(driver, webElement(locator));
+        setSteps();
         webElement(locator).sendKeys(text);
+
     }
 
     protected void click(By locator , int time ){
         explicitWait( locator , time);
+        addBorderToElement(driver, webElement(locator));
+        setSteps();
         webElement(locator).click();
     }
 
@@ -56,6 +66,8 @@ public class MethodHandles {
 
     protected String getText(By locator , int time){
         explicitWait( locator , time);
+        addBorderToElement(driver, webElement(locator));
+        setSteps();
         return webElement(locator).getText() ;
     }
 
@@ -103,5 +115,28 @@ public class MethodHandles {
     protected void switchToFrameByIndex(int frameIndex){
         driver.switchTo().frame(frameIndex);
     }
+
+    private static String getMethodName() {
+        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+        if (stackTraceElements.length >= 2) {
+            if (stackTraceElements.length >= 4)
+                return stackTraceElements[4].getMethodName();
+            return stackTraceElements[2].getMethodName();
+        } else {
+            return "Unknown";
+        }
+    }
+
+    public void setSteps(){
+        test.info(getMethodName());
+    }
+
+    private static void addBorderToElement(WebDriver driver, WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].style.border = '5px solid red'", element);
+    }
+
+
+
 }
 
