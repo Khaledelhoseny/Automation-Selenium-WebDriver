@@ -18,7 +18,6 @@ public class ExampleOnePage extends MethodHandles {
         click(startButton,5);
     }
     public String getHelloWorldMessage(){
-
         return  getText(helloWorldMessage, 5 );
     }
 

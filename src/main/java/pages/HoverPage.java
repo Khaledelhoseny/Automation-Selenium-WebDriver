@@ -18,7 +18,6 @@ public class HoverPage extends MethodHandles {
         element  = driver.findElements(figure).get(index-1) ;
         hoverOverByIndex(figure , index);
     }
-
     public String getUserData(){
         WebElement caption =  element.findElement(figureCaption) ;
         return caption.findElement(username).getText() ;

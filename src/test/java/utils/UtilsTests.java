@@ -53,7 +53,6 @@ public class UtilsTests{
         test.addScreenCaptureFromPath(method.getName()+".png");
         test.log(Status.INFO , "<a href = '"+method.getName()+".avi'> Download Video </a>") ;
     }
-
     public void createTestCaseInReport(Method method){
         test = extent.createTest(method.getName());
     }

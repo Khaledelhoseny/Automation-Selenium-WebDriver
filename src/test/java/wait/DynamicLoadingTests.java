@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DynamicLoadingPage;
 import pages.ExampleOnePage;
+import pages.ExampleTwoPage;
 
 public class DynamicLoadingTests extends BaseTests {
     @Test
@@ -15,6 +16,16 @@ public class DynamicLoadingTests extends BaseTests {
         String expectedResult = "Hello World!" ;
 //        Thread.sleep(5000);
         String actualResult =  exampleOnePage.getHelloWorldMessage()  ;
+        Assert.assertEquals(actualResult ,expectedResult );
+    }
+
+    @Test
+    public void testExampleTwo(){
+        DynamicLoadingPage dynamicLoadingPage = homePage.clickOnDynamicLoadingLink() ;
+        ExampleTwoPage exampleTwoPage = dynamicLoadingPage.clickOneExampleTwoLink() ;
+        exampleTwoPage.clickOnStartButton();
+        String expectedResult = "Hello World!" ;
+        String actualResult =  exampleTwoPage.getHelloWorldMessage()  ;
         Assert.assertEquals(actualResult ,expectedResult );
     }
 

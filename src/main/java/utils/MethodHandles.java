@@ -17,6 +17,7 @@ import java.awt.*;
 import java.time.Duration;
 
 public class MethodHandles {
+
     protected WebDriver driver ;
     WebDriverWait wait  ;
     Actions actions ;
@@ -45,7 +46,6 @@ public class MethodHandles {
         addBorderToElement(driver, webElement(locator));
         setSteps();
         webElement(locator).sendKeys(text);
-
     }
 
     protected void click(By locator , int time ){
@@ -104,18 +104,15 @@ public class MethodHandles {
         select = new Select(webElement(locator));
         select.selectByIndex(index);
     }
-
     protected void switchToFrameByString(String frameId){
         driver.switchTo().frame(frameId);
     }
     protected void switchToParent(){
         driver.switchTo().parentFrame();
-
     }
     protected void switchToFrameByIndex(int frameIndex){
         driver.switchTo().frame(frameIndex);
     }
-
     private static String getMethodName() {
         StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
         if (stackTraceElements.length >= 2) {
@@ -126,7 +123,6 @@ public class MethodHandles {
             return "Unknown";
         }
     }
-
     public void setSteps(){
         test.info(getMethodName());
     }
