@@ -12,7 +12,7 @@ public class ReflectSignUpPage extends MethodHandles {
         super(driver);
     }
 
-    private final By inputField = By.cssSelector("input.input-field") ;
+    private  By inputField = By.cssSelector("input.input-field") ;
 
     public void insetFisrtName(String text){
         WebElement firstName =  driver.findElements(inputField).get(0);
