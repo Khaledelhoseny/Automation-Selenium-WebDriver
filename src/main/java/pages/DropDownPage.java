@@ -10,6 +10,6 @@ public class DropDownPage extends MethodHandles {
     }
     private final By dropDownList = By.xpath("//select[@id='dropdown']") ;
     public void selectFromDropDown(int index){
-        selectElementByIndex(dropDownList , index);
+        selectElementByIndex(dropDownList , index , 5);
     }
 }

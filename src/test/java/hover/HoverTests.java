@@ -4,6 +4,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.HoverPage;
+import utils.UtilsTests;
+
+import static utils.MethodHandles.myAssertEquals;
+
+//import static utils.UtilsTests.myAssertEquals;
+
 public class HoverTests extends BaseTests {
     @Test
     public void testGetUserData(){
@@ -11,6 +17,9 @@ public class HoverTests extends BaseTests {
         hoverPage.hoverOverFigure(3);
         String actualResult = hoverPage.getUserData();
         String expectedResult = "name: user3" ;
-        Assert.assertEquals(actualResult,expectedResult);
+        myAssertEquals(actualResult,expectedResult);
+//        myAssertEquals(actualResult , expectedResult);
     }
+
+
 }

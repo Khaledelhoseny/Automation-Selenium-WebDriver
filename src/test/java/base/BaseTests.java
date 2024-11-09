@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 
 public class BaseTests {
     protected WebDriver driver ;
-    UtilsTests utilsTests ;
+    public UtilsTests utilsTests ;
     ChromeOptions chromeOptions ;
     FirefoxOptions firefoxOptions ;
     public ReadDataFromJson readDataFromJson;

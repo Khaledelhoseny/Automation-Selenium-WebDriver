@@ -8,6 +8,8 @@ import pages.SecureAreaPage;
 
 import java.io.FileNotFoundException;
 
+import static utils.MethodHandles.myAssertTrue;
+
 public class LoginTests extends BaseTests {
 
     @Test (groups = {"regression2" , "smoke"} ,priority = 1)
@@ -16,7 +18,8 @@ public class LoginTests extends BaseTests {
         SecureAreaPage secureAreaPage = loginPage.loginFeature(dataModel().Login.ValidCredentials.Username,dataModel().Login.ValidCredentials.Password);
         String actualResult = secureAreaPage.getValidationMessage() ;
         String expectedResult = "You logged into a secure area!" ;
-        Assert.assertTrue(actualResult.contains(expectedResult));
+        myAssertTrue(actualResult,expectedResult);
+//        Assert.assertTrue(actualResult.contains(expectedResult));
     }
     @Test (groups = {"regression2" , "smoke"} ,priority = 2)
     public void testInvalidUserName() throws FileNotFoundException, InterruptedException {

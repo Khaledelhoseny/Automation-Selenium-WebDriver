@@ -3,12 +3,15 @@ package utils;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.ITestResult;
 
 import java.io.File;
@@ -55,7 +58,9 @@ public class UtilsTests{
     }
     public void createTestCaseInReport(Method method){
         test = extent.createTest(method.getName());
+        test.info(MarkupHelper.createLabel("----------- Steps To Reproduce -----------------" , ExtentColor.BLUE));
     }
+
 
 
 }

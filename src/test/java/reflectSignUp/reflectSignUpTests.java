@@ -41,7 +41,6 @@ public class reflectSignUpTests extends BaseTests {
         driver.navigate().refresh();
         firstName.sendKeys("El Hoseny");
 
-
 //        reflectSignUpPage.insetFisrtName("khaled");
 //        driver.navigate().refresh();
 //        reflectSignUpPage.insetFisrtName("ahmed");

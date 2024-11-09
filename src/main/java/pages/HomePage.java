@@ -19,6 +19,7 @@ public class HomePage extends MethodHandles {
     private final By hoverLink = By.linkText("Hovers");
     private final By dropDownLoadingLink = By.linkText("Dropdown") ;
     private final By dynamicLoadingLink = By.linkText("Dynamic Loading") ;
+    private final By statusCodesLink = By.linkText("Status Codes") ;
 
 
 
@@ -48,14 +49,19 @@ public class HomePage extends MethodHandles {
         return new HoverPage(driver);
     }
     public DropDownPage clickOnDropDownLink (){
-        driver.findElement(dropDownLoadingLink).click();
+        click(dropDownLoadingLink , 5 );
         return new DropDownPage(driver) ;
     }
 
     public DynamicLoadingPage clickOnDynamicLoadingLink (){
-        driver.findElement(dynamicLoadingLink).click();
-
+        click(dynamicLoadingLink , 5);
         return new DynamicLoadingPage(driver) ;
     }
 
+    public void scrollIntoLink(){
+        scrollWithJsExecutor(statusCodesLink);
+    }
+    public void clickOnStatusCodesLink(){
+        click(statusCodesLink,5);
+    }
 }

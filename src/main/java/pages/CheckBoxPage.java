@@ -18,10 +18,10 @@ public class CheckBoxPage extends MethodHandles {
         click(chekcBoxTwo,5);
     }
     public boolean checkBoxOneIsSelected (){
-        return isSelected(checkBoxOne);
+        return isSelected(checkBoxOne , 5);
     }
-    public boolean checkBoxTwoIsSelected (){
-        return isSelected(chekcBoxTwo);
+    public boolean checkBoxTwoIsNotSelected (){
+        return isSelected(chekcBoxTwo , 5);
     }
 
 }

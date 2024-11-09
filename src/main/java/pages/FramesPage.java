@@ -15,7 +15,7 @@ public class FramesPage extends MethodHandles {
     private final By iframeWithinAnIframe = By.linkText("Iframe with in an Iframe") ;
 
     public void insertTextInSingelIframe( String text ){
-        switchToFrameByString(frameId);
+        switchToFrame(frameId);
         sendKeys(frameInput,4,text);
         switchToParent();
     }
@@ -25,8 +25,8 @@ public class FramesPage extends MethodHandles {
     }
 
     public void insertTextInNestedIframe( String text ){
-        switchToFrameByIndex(1);
-        switchToFrameByIndex(0);
+        switchToFrame(1);
+        switchToFrame(0);
         sendKeys(frameInput,4,text);
     }
 

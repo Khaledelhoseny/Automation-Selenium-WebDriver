@@ -23,9 +23,8 @@ public class ExampleTwoPage extends MethodHandles {
         click(startButton,5);
     }
     public String getHelloWorldMessage(){
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(loading)) ;
-        return  driver.findElement(helloWorldMessage).getText();
+       inVisabilityOfElement(loading,3);
+       return driver.findElement(helloWorldMessage).getText() ;
     }
 
 }

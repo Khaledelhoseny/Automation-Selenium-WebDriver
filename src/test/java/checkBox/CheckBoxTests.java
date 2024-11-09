@@ -12,6 +12,6 @@ public class CheckBoxTests extends BaseTests {
         checkBoxPage.clickOnCheckBoxOne();
         checkBoxPage.clickOnCheckBoxTow();
         Assert.assertTrue(checkBoxPage.checkBoxOneIsSelected());
-        Assert.assertFalse(checkBoxPage.checkBoxTwoIsSelected());
+        Assert.assertFalse(checkBoxPage.checkBoxTwoIsNotSelected());
     }
 }

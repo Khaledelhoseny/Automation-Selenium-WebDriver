@@ -14,7 +14,8 @@ public class DragAndDropPage extends MethodHandles {
     private final By columnB = By.id("column-b") ;
 
     public void dragAndDrop(){
-        dragAndDropAction(columnA , columnB );
+//        dragAndDropAction(columnA , columnB );
+        moveToElement(columnA,columnB,5);
     }
 
 
