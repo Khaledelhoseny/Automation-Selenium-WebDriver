@@ -67,10 +67,10 @@ public class BaseTests {
 //                Set status in extent report
         utilsTests.setStatus(testMethod,result);
     }
-//    @AfterClass (groups = {"regression2","smoke"})
-//    public void teaDown(){
-//        driver.quit();
-//    }
+    @AfterClass (groups = {"regression2","smoke"})
+    public void teaDown(){
+        driver.quit();
+    }
 
     @BeforeSuite  (groups = {"regression2","smoke"})
     public void beforeSuite(){

@@ -15,6 +15,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.awt.SystemColor.text;
 
@@ -233,6 +235,20 @@ public class MethodHandles {
         }
 
     }
+    protected List <String> getOptions(By locator){
+        select = new Select(webElement(locator));
+        setSteps();
+        List<WebElement> selectedElements = select.getAllSelectedOptions();
+        List<String> list = new ArrayList<String>(5);
+        for (WebElement result : selectedElements) {
+            list.add(result.getText());
+            System.out.println(result.getText());
+        }
+        System.out.println(list);
+        return list ;
+    }
+
+
     protected void switchToFrame(String nameOrId){
         driver.switchTo().frame(nameOrId);
     }

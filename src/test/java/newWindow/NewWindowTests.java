@@ -3,7 +3,9 @@ package newWindow;
 import base.BaseTests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WindowType;
+import org.testng.Assert;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 import pages.AutomationPracticeHomePage;
 import pages.AutomationPracticeLoginPage;
 import utils.ScreenRecorderUtil;
@@ -52,5 +54,17 @@ public class NewWindowTests extends BaseTests {
         driver.switchTo().window((String) allTabs[0]) ;
         System.out.println(driver.getTitle());
         automationPracticePage.insertSearchText("T-Shirts");
+    }
+
+    @Test
+    public void softAssertion(){
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(false,true);
+        System.out.println("After Assertion");
+    }
+    @Test
+    public void hardAssertion(){
+        Assert.assertEquals(false,true);
+        System.out.println("After Assertion");
     }
 }
