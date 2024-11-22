@@ -9,7 +9,7 @@ import pages.SecureAreaPage;
 
 public class DataProviderLoginTests extends BaseTests {
 
-    @Test( dataProviderClass = LoginDataProvider.class ,dataProvider = "loginData")
+    @Test( dataProviderClass = LoginDataProvider.class ,dataProvider = "dataProvider")
     public void dataProviderSuccessfulLogin( String username , String password ){
         LoginPage loginPage =  homePage.clickFormAuthemticationLink() ;
         SecureAreaPage secureAreaPage = loginPage.loginFeature(username , password);
