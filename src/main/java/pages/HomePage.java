@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utils.MethodHandles;
 
+import java.io.File;
+
 public class HomePage extends MethodHandles {
 
    public HomePage(WebDriver driver){
@@ -20,9 +22,8 @@ public class HomePage extends MethodHandles {
     private final By dropDownLoadingLink = By.linkText("Dropdown") ;
     private final By dynamicLoadingLink = By.linkText("Dynamic Loading") ;
     private final By statusCodesLink = By.linkText("Status Codes") ;
-
-
-
+    private final By fileUploadLink = By.linkText("File Upload");
+    private final By nestedFramesLink = By.linkText("Nested Frames") ;
 
     public LoginPage clickFormAuthemticationLink(){
        click(formAuthemticationLink ,  5);
@@ -57,7 +58,14 @@ public class HomePage extends MethodHandles {
         click(dynamicLoadingLink , 5);
         return new DynamicLoadingPage(driver) ;
     }
-
+    public FileUploadPage clickOnFileUpload(){
+        click(fileUploadLink , 5);
+        return new FileUploadPage(driver) ;
+    }
+    public NestedFramePage clickOnNestedFrame(){
+        click(nestedFramesLink,5);
+        return new NestedFramePage(driver) ;
+    }
     public void scrollIntoLink(){
         scrollWithJsExecutor(statusCodesLink);
     }
