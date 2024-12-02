@@ -8,15 +8,13 @@ import junit.framework.Assert;
 import org.apache.poi.ss.formula.atp.Switch;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 
 import java.awt.*;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static java.awt.SystemColor.text;
 
@@ -24,6 +22,7 @@ public class MethodHandles {
 
     protected WebDriver driver ;
     WebDriverWait wait  ;
+    FluentWait fluentWait ;
     Actions actions ;
     Select select ;
     static ExtentTest test ;
@@ -48,6 +47,13 @@ public class MethodHandles {
     protected void inVisabilityOfElement(By locator , int time ){
         wait = new WebDriverWait(driver , Duration.ofSeconds(time)) ;
         wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+    protected void fluentWait( By locator , int time){
+        fluentWait = new FluentWait(driver)
+                .withTimeout(Duration.ofSeconds(time))
+                .pollingEvery(Duration.ofSeconds(2))
+                .ignoring(NoSuchElementException.class);
+        fluentWait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     protected void sendKeys(By locator , int time , String text){

@@ -28,5 +28,15 @@ public class DynamicLoadingTests extends BaseTests {
         String actualResult =  exampleTwoPage.getHelloWorldMessage()  ;
         Assert.assertEquals(actualResult ,expectedResult );
     }
+    @Test
+    public void testFluentWait(){
+        DynamicLoadingPage dynamicLoadingPage = homePage.clickOnDynamicLoadingLink() ;
+        ExampleOnePage exampleOnePage = dynamicLoadingPage.clickOneExampleOneLink() ;
+        exampleOnePage.clickOnStartButton();
+        String expectedResult = "Hello World!" ;
+//        Thread.sleep(5000);
+        String actualResult =  exampleOnePage.getHelloWorldMessageWithFluentWait();
+        Assert.assertEquals(actualResult ,expectedResult );
+    }
 
 }

@@ -20,6 +20,8 @@ public class ExampleOnePage extends MethodHandles {
     public String getHelloWorldMessage(){
         return  getText(helloWorldMessage, 4);
     }
-
-
+    public String getHelloWorldMessageWithFluentWait(){
+        fluentWait(helloWorldMessage , 5);
+        return driver.findElement(helloWorldMessage).getText();
+    }
 }

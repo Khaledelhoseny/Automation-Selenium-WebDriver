@@ -5,7 +5,6 @@ import base.BaseTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DropDownPage;
-
 import java.util.List;
 
 public class DropDownTests extends BaseTests {
