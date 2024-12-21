@@ -1,15 +1,15 @@
 package dataProviderLogin;
 
 import base.BaseTests;
-import dataProvider.LoginDataProvider;
+import dataProvider.ExcelDataSupllier;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.SecureAreaPage;
 
-public class DataProviderLoginTests extends BaseTests {
-    @Test(dataProviderClass = LoginDataProvider.class ,dataProvider = "dataProvider")
-    public void dataProviderSuccessfulLogin( String username , String password ){
+public class LogginWithExcel extends BaseTests {
+    @Test(dataProvider = "loginData", dataProviderClass = ExcelDataSupllier.class)
+    public void SuccessfulLogin( String username , String password ){
         LoginPage loginPage =  homePage.clickFormAuthemticationLink() ;
         SecureAreaPage secureAreaPage = loginPage.loginFeature(username , password);
         String actualResult = secureAreaPage.getValidationMessage() ;

@@ -16,5 +16,6 @@ public class DropDownTests extends BaseTests {
        List<String> selectedOption = dropDownPage.getSelectedOptions();
        Assert.assertEquals(selectedOption.size(), 1 , "incorrect number of selection");
        Assert.assertTrue(selectedOption.contains("Option 2"));
+//       Assert.assertEquals(selectedOption.get(0) , "Option 2");
     }
 }

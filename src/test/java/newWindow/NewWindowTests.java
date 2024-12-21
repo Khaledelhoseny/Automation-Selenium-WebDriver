@@ -35,13 +35,13 @@ public class NewWindowTests extends BaseTests {
         utilsTests = new UtilsTests(driver) ;
         utilsTests.createTestCaseInReport(testMethod);
     }
-    @Test
+    @Test(priority = 4)
     public void newWindowTests(){
         WebDriver newWindow = driver.switchTo().newWindow(WindowType.WINDOW) ;
         newWindow.get("http://www.automationpractice.pl/index.php?controller=stores");
         System.out.println(newWindow.getTitle());
     }
-    @Test
+    @Test(priority = 3)
     public void testWorkingInBothWindowTabs(){
         driver.switchTo().newWindow(WindowType.TAB)
                 .get("http://www.automationpractice.pl/index.php?controller=authentication&back=my-account");
@@ -56,15 +56,43 @@ public class NewWindowTests extends BaseTests {
         automationPracticePage.insertSearchText("T-Shirts");
     }
 
-    @Test
+    @Test(priority = 2)
     public void softAssertion(){
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(false,true);
         System.out.println("After Assertion");
+        softAssert.assertAll();
     }
-    @Test
+    @Test(priority = 1)
     public void hardAssertion(){
+        System.out.println("Hard Assertion");
         Assert.assertEquals(false,true);
         System.out.println("After Assertion");
+    }
+    @Test(priority = 4)
+    public void closeAllTabs(){
+        driver.switchTo().newWindow(WindowType.TAB)
+                .get("http://www.automationpractice.pl/index.php?controller=authentication&back=my-account");
+        System.out.println(driver.getTitle());
+        AutomationPracticeLoginPage automationPracticeLoginPage = new AutomationPracticeLoginPage(driver);
+        automationPracticeLoginPage.insertInEmailAddressInput("khaledelhoseny76@gmail.com");
+        automationPracticeLoginPage.clickOnCreateAccountButton();
+
+        driver.switchTo().newWindow(WindowType.TAB)
+                .get("https://prestashop.com/blog/");
+
+        Object[] allTabs = driver.getWindowHandles().toArray();
+        for (int i = 0 ; i<allTabs.length ; i++) {
+            if(i!=0){
+                System.out.println(i);
+                driver.switchTo().window((String) allTabs[i]) ;
+                driver.close();
+            }
+        }
+        driver.switchTo().window((String) allTabs[0]);
+
+//        System.out.println(driver.getTitle());
+//        automationPracticePage.insertSearchText("T-Shirts");
+        UtilsTests.print();
     }
 }

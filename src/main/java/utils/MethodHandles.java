@@ -87,7 +87,6 @@ public class MethodHandles {
     protected void scrollToElement( By locator){
         actions = new Actions(driver) ;
         actions.scrollToElement(webElement(locator)).build().perform();
-
     }
     public void scrollWithJsExecutor( By locator ){
         JavascriptExecutor js = (JavascriptExecutor) driver ;

@@ -32,8 +32,6 @@ public class UtilsTests{
         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE) ;
         FileUtils.copyFile(file ,new File("report/"+testMethod.getName()+".png"));
     }
-
-
     public void createReport(){
         extent  = new ExtentReports();
         ExtentSparkReporter spark = new ExtentSparkReporter("report/report.html");
@@ -60,7 +58,7 @@ public class UtilsTests{
         test = extent.createTest(method.getName());
         test.info(MarkupHelper.createLabel("----------- Steps To Reproduce -----------------" , ExtentColor.BLUE));
     }
-
-
-
+    public static void print(){
+        System.out.println("hi");
+    }
 }

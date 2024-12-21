@@ -25,12 +25,8 @@ public class NestedFramePage extends MethodHandles {
     }
 
     public String getBottomText(){
-        switchToParent();
-        switchToParent();
+        driver.switchTo().defaultContent();
         switchToFrame(frameBottom);
         return getText(bottomText , 5) ;
     }
-
-
-
 }
