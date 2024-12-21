@@ -11,7 +11,7 @@ import org.testng.annotations.DataProvider;
 public class ExcelDataSupllier {
 
     @DataProvider(name="loginData")
-    public Object[][] getData() throws Exception {
+    public Object[][]  getData() throws Exception {
         File excelFile = new File("D:\\Automation-Selenium-WebDriver\\data\\Untitled spreadsheet.xlsx");
         FileInputStream fis = new FileInputStream(excelFile);
         XSSFWorkbook workbook = new XSSFWorkbook(fis);
