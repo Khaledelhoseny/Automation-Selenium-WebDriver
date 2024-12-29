@@ -1,24 +1,15 @@
 {
-  "URL" : "https://the-internet.herokuapp.com/",
+  "URL" : "https://petstore.com/",
   "Login": {
     "ValidCredentials" : {
-      "Username" : "tomsmith" ,
-      "Password" : "SuperSecretPassword!"
+      "Email" : "khaledelhoseny76@gmail.com" ,
+      "Password" : "Khaledelhoseny7"
     },
     "InValidCredentials" : {
-      "InValidPassword" : {
-        "Username" : "tomsmith" ,
+        "Email" : "aaaa@gmail.com" ,
         "Password" : "123422"
-      },
-      "InValidUserName": {
-        "Username" : "aymaannss" ,
-        "Password" : "SuperSecretPassword!"
       }
-    }
   },
-  "Login2" : [
-    ["ahmed" , "123"],
-    ["mostafa" , "123"],
-    ["khaled" , "123"]
-  ]
+  "ValidProduct" : "Apple Cinema 30",
+  "InvalidProduct" : "aaaaaaa"
 }

@@ -50,15 +50,14 @@ public class UtilsTests{
             test.pass("test pass") ;
         }else if (result.getStatus() == ITestResult.FAILURE ){
             test.fail("test fail") ;
+            test.log(Status.FAIL ,result.getThrowable().getMessage()) ;
+            test.addScreenCaptureFromPath(method.getName()+".png");
+            test.log(Status.INFO , "<a href = '"+method.getName()+".avi'> Download Video </a>") ;
         }
-        test.addScreenCaptureFromPath(method.getName()+".png");
-        test.log(Status.INFO , "<a href = '"+method.getName()+".avi'> Download Video </a>") ;
     }
     public void createTestCaseInReport(Method method){
         test = extent.createTest(method.getName());
         test.info(MarkupHelper.createLabel("----------- Steps To Reproduce -----------------" , ExtentColor.BLUE));
     }
-    public static void print(){
-        System.out.println("hi");
-    }
+
 }

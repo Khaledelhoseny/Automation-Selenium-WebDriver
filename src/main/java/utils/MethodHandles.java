@@ -4,6 +4,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
+import com.github.javafaker.Faker;
 import junit.framework.Assert;
 import org.apache.poi.ss.formula.atp.Switch;
 import org.openqa.selenium.*;
@@ -19,7 +20,7 @@ import java.util.NoSuchElementException;
 import static java.awt.SystemColor.text;
 
 public class MethodHandles {
-
+    protected Faker faker ;
     protected WebDriver driver ;
     WebDriverWait wait  ;
     FluentWait fluentWait ;
@@ -33,15 +34,16 @@ public class MethodHandles {
     private WebElement webElement(By locator ){
        return driver.findElement(locator) ;
     }
-    private WebElement webElements(By locator , int index){
-        return driver.findElements(locator).get(index-1) ;
+    public WebElement getWebElementByIndex(By locator , int index){
+        return driver.findElements(locator).get(index) ;
+
     }
     protected void explicitWait(By locator , int time ){
         wait = new WebDriverWait(driver , Duration.ofSeconds(time)) ;
-        wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(webElement(locator)),
-                ExpectedConditions.visibilityOfElementLocated(locator) ,
-                ExpectedConditions.elementToBeClickable(locator),
-                ExpectedConditions.presenceOfElementLocated(locator)
+        wait.until(ExpectedConditions.and(
+                ExpectedConditions.visibilityOfElementLocated(locator)
+//                ExpectedConditions.elementToBeClickable(locator),
+//                ExpectedConditions.presenceOfElementLocated(locator)
         ));
     }
     protected void inVisabilityOfElement(By locator , int time ){
@@ -84,9 +86,31 @@ public class MethodHandles {
             }
         }
     }
-    protected void scrollToElement( By locator){
+    protected void clickByIndex(By locator , int time , int index ){
+        for (int i = 0 ; i<5 ; i++){
+            try {
+                explicitWait( locator , time);
+                addBorderToElement(driver, getWebElementByIndex(locator,index-1));
+                setSteps();
+                getWebElementByIndex(locator, index-1).click();
+                break;
+            }catch (StaleElementReferenceException e){
+                System.out.println("Element doesn't exist");
+            }
+        }
+    }
+
+    protected void scrollToElement( By locator , int time){
+        explicitWait(locator ,time );
         actions = new Actions(driver) ;
         actions.scrollToElement(webElement(locator)).build().perform();
+    }
+    protected void scrollToElementbyIndex(By locator ,int index , int time){
+        explicitWait(locator ,time );
+        addBorderToElement(driver, getWebElementByIndex(locator,index-1));
+        setSteps();
+        actions = new Actions(driver) ;
+        actions.scrollToElement(getWebElementByIndex(locator , index-1)).build().perform();
     }
     public void scrollWithJsExecutor( By locator ){
         JavascriptExecutor js = (JavascriptExecutor) driver ;
@@ -214,9 +238,9 @@ public class MethodHandles {
         for (int i = 0 ; i<5 ; i++){
             try {
                 explicitWait( locator , time);
-                addBorderToElement(driver, webElements(locator,index));
+                addBorderToElement(driver, getWebElementByIndex(locator,index));
                 setSteps();
-                actions.moveToElement(webElements(locator,index)).build().perform();
+                actions.moveToElement(getWebElementByIndex(locator,index)).build().perform();
                 break;
             }catch (StaleElementReferenceException e){
                 System.out.println("Element doesn't exist");
@@ -302,6 +326,29 @@ public class MethodHandles {
         test.info(expected);
         Assert.assertTrue(actual.contains(expected));
     }
+
+
+    protected String generateFakeName(){
+        faker = new Faker();
+        return faker.name().fullName().toLowerCase().replaceAll("\\s+","") ;
+    }
+    protected String generateFirstName(){
+        faker = new Faker();
+        return faker.name().firstName() ;
+    }
+    protected String generateLastName(){
+        faker = new Faker();
+        return faker.name().lastName() ;
+    }
+    protected String generateEmail(){
+        faker = new Faker();
+        return faker.internet().emailAddress() ;
+    }
+    protected String generatePassword(){
+        faker = new Faker();
+        return faker.internet().password(8, 16, true, true, true);
+    }
+
 
 }
 

@@ -2,8 +2,7 @@ package data;
 
 public class InValidCredentials {
 
-    public InValidPassword InValidPassword ;
-    public InValidUserName InValidUserName ;
-
+    public String Email ;
+    public String Password ;
 
 }
