@@ -10,11 +10,12 @@ public class LoginTests extends BaseTests {
 
     @Test
     public void testSuccessfulLogin() throws FileNotFoundException {
-        homePage.clickOnSiteNavButton();
+        homePage.clickOnSiteNavButton() ;
         LoginPage loginPage = homePage.clickOnLoginButton();
         String email = dataModel().Login.ValidCredentials.Email;
         String password = dataModel().Login.ValidCredentials.Password;
         loginPage.loginFeature(email , password);
+        System.out.println("aaa");
     }
     @Test
     public void testUnSuccessfulLogin() throws FileNotFoundException {
