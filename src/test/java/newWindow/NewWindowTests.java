@@ -77,7 +77,6 @@ public class NewWindowTests extends BaseTests {
         AutomationPracticeLoginPage automationPracticeLoginPage = new AutomationPracticeLoginPage(driver);
         automationPracticeLoginPage.insertInEmailAddressInput("khaledelhoseny76@gmail.com");
         automationPracticeLoginPage.clickOnCreateAccountButton();
-
         driver.switchTo().newWindow(WindowType.TAB)
                 .get("https://prestashop.com/blog/");
 
